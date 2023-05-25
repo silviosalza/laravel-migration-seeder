@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@section('content')
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    @vite('resources/js/app.js')
-
-</head>
-
-<body>
-
-   <h1>ciao</h1>
-
-</body>
-
-</html>
+    <table class="table">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">Departure Station</th>
+            <th scope="col">Arrival Station</th>
+            <th scope="col">Code</th>
+            <th scope="col">Departure Date</th>
+            <th scope="col">On Time</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach ($trains as $train)
+          <tr>
+            <td>{{$train -> departure_station}}</td>
+            <td>{{$train -> arrival_station}}</td>
+            <td>{{$train -> code}}</td>
+            <td>{{$train -> departure_date}}</td>
+            <td>{{$train -> on_time}}</td>
+          </tr>
+        @endforeach
+        </tbody>
+      </table>
+@endsection

@@ -18,9 +18,15 @@ class TrainTableSeeder extends Seeder
     {
         for($i = 0; $i < 30; $i++) {
             $train = new Train();
-            $train->reference = $faker->bothify('??-#########');
-
-
+            $train->code = $faker->bothify('??-#####');
+            $train->company = $faker->company();
+            $train->departure_station = $faker->city();
+            $train->arrival_station = $faker->city();
+            $train->total_couch = $faker->numberBetween(1,20);
+            $train->departure_date = $faker->dateTimeBetween('-1 week', '+1 week');
+            $train->on_time = $faker->randomElement([true, false]);
+            $train->canceled = $faker->randomElement([true, false]);
+            $train->save();
         }    
     }
 }
